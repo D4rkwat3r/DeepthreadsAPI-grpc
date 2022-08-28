@@ -1,0 +1,9 @@
+syntax = "proto3";
+package ru.deepthreads.api.grpc;
+
+import "users.proto";
+
+message ApiException {
+  int32 api_code = 1;
+  string api_message = 2;
+}

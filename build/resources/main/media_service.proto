@@ -1,0 +1,30 @@
+syntax = "proto3";
+package ru.deepthreads.api.grpc;
+
+service MediaService {
+  rpc UploadMedia(UploadMediaRequest) returns (MediaResponse);
+  rpc GetMediaById(MediaIdRequest) returns (MediaResponse);
+  rpc GetMediaByPath(MediaPathRequest) returns (MediaResponse);
+}
+
+message UploadMediaRequest {
+  string name = 1;
+  string type = 2;
+  bytes media = 3;
+}
+
+message MediaIdRequest {
+  string resource_id = 1;
+}
+
+message MediaPathRequest {
+  string resource_path = 1;
+}
+
+message MediaResponse {
+  string name = 1;
+  string type = 2;
+  string id = 3;
+  string path = 4;
+  bytes media = 5;
+}

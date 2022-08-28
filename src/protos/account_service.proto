@@ -1,0 +1,32 @@
+syntax = "proto3";
+package ru.deepthreads.api.grpc;
+
+import "google/protobuf/empty.proto";
+import "users.proto";
+
+service AccountService {
+  rpc GetCurrentAccount(google.protobuf.Empty) returns (MAccount);
+  rpc GetCurrentProfile(google.protobuf.Empty) returns (MUserProfile);
+  rpc GetProfileById(UserIdRequest) returns (MUserProfile);
+  rpc ChangeNickname(ChangeNicknameRequest) returns (MUserProfile);
+  rpc ChangeDeepId(ChangeDeepIdRequest) returns (MUserProfile);
+  rpc ChangeAvatar(ChangeAvatarRequest) returns (MUserProfile);
+  rpc SubscribeToProfile(UserIdRequest) returns (google.protobuf.Empty);
+  rpc UnsubscribeFromProfile(UserIdRequest) returns (google.protobuf.Empty);
+}
+
+message UserIdRequest {
+  string user_id = 1;
+}
+
+message ChangeNicknameRequest {
+  string nickname = 1;
+}
+
+message ChangeDeepIdRequest {
+  string deep_id = 1;
+}
+
+message ChangeAvatarRequest {
+  string avatar_resource = 1;
+}

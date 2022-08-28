@@ -1,0 +1,30 @@
+syntax = "proto3";
+package ru.deepthreads.api.grpc;
+
+import "users.proto";
+
+service AuthService {
+	rpc DoLogin(LoginRequest) returns (AuthResponse);
+	rpc DoRegister(RegisterRequest) returns (AuthResponse);
+}
+
+message LoginRequest {
+	string deep_id = 1;
+	string password = 2;
+}
+
+message RegisterRequest {
+	string nickname = 1;
+	string deep_id = 2;
+	optional string avatar_resource = 4;
+	string password = 3;
+}
+
+message AuthResponse {
+	MUserProfile user_profile = 1;
+	MAccount account = 2;
+	string auth_token = 3;
+	string refresh_token = 4;
+	int64 auth_token_lifetime = 5;
+	int64 refresh_token_lifetime = 6;
+}

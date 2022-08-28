@@ -1,0 +1,19 @@
+syntax = "proto3";
+package ru.deepthreads.api.model;
+
+option java_multiple_files = true;
+
+service AuthService {
+	rpc DoAuth(AuthRequest) returns (AuthResponse);
+}
+
+message AuthRequest {
+	string username = 1;
+	string password = 2;
+}
+
+message AuthResponse {
+	bool ok = 1;
+	string user_id = 2;
+	string session_id = 3;
+}

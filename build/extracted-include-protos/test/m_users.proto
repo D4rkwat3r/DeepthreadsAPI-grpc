@@ -1,0 +1,17 @@
+syntax = "proto3";
+package ru.deepthreads.api.model;
+
+import "google/protobuf/timestamp.proto";
+
+message MUserProfile {
+  string nickname = 1;
+  string deep_id = 2;
+  string user_id = 3;
+  int32 role = 4;
+  google.protobuf.Timestamp created_time = 5;
+}
+
+message MAccount {
+  bool verified = 1;
+  bool deep_id_editable = 2;
+}
